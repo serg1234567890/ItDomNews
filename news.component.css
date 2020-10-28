@@ -1,0 +1,170 @@
+.topframe
+{
+    width: 100%;
+}
+.newsformframe{
+    margin: 0px auto;
+    max-width: 600px;
+}
+.newsformframecaption{
+    width: 100%;
+    text-align: left;
+    line-height: 30px;
+    font-size: 1.56rem;
+}
+.newsformframecaptiontext {
+    font-size: 12px;
+}
+.sectionsframe{
+    width: 100%;
+    height: 410px;
+    line-height: 40px;
+    text-align: left;
+    display:block;
+}
+.targetsframe{
+    margin: 0px auto;
+    width: 100%;
+    max-height: 120px;
+    line-height: 40px;
+    overflow-y: auto;
+    text-align: left;
+}
+.sectionsframerow{
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+    width: 95%;
+    margin-left: 0px;
+}
+.editorframe{
+    width: 95%;
+    margin-left: 0px;
+}
+.sectionsseparator{
+    height: 20px;
+    line-height: 20px;
+    width: 100%;
+}
+.sectionsframerowdropdown {
+    font-size: 12px;
+    min-height: 35px;
+    white-space: normal;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    cursor: pointer;
+    cursor: hand;
+}
+.sectionsframerowmultiselect {
+    font-size: 12px;
+    min-height: 35px;
+    white-space: normal;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    width: 100%;
+}
+.createsectionbutton {
+    font-size: 22px;
+    margin-left: 20px;
+    cursor: pointer;
+    cursor: hand;
+}
+.faqbuttons {
+    background-color: rgb(214, 255, 212) !important;
+    color:black !important;
+    -moz-box-shadow:    1px 1px 2px 1px rgb(22, 22, 22);
+    -webkit-box-shadow: 1px 1px 2px 1px rgb(22, 22, 22);
+    box-shadow:         1px 1px 2px 1px rgb(22, 22, 22);
+    white-space: normal;
+}
+.sectionbuttons{
+    background-color: rgb(59, 161, 17) !important;
+    color:white !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF75C64E', endColorstr='#FF4AA11F');
+    background-image: -owg-linear-gradient(to bottom, #75c64e 1%, #4aa11f 100%);
+    background-image: -webkit-linear-gradient(to bottom, #75c64e 1%, #4aa11f 100%);
+    background-image: -moz-linear-gradient(to bottom, #75c64e 1%, #4aa11f 100%);
+    background-image: -o-linear-gradient(to bottom, #75c64e 1%, #4aa11f 100%);
+    background-image: linear-gradient(to bottom, #75c64e 1%, #4aa11f 100%);
+    -moz-border-radius:    5px 5px 5px 5px;
+    -webkit-border-radius: 5px;  
+    border-radius:         5px 5px 5px 5px;
+    font-size: 12px;
+    width: 134px;
+    min-height: 33px;
+    white-space: normal;
+    margin-bottom: 20px;
+}
+.sectionbuttonscancel{
+    background-color: rgb(59, 161, 17) !important;
+    color:black !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF888888', endColorstr='#FF4AA11F');
+    background-image: -owg-linear-gradient(to bottom, #cccccc 1%, #bbbbbb 100%);
+    background-image: -webkit-linear-gradient(to bottom, #cccccc 1%, #bbbbbb 100%);
+    background-image: -moz-linear-gradient(to bottom, #cccccc 1%, #bbbbbb 100%);
+    background-image: -o-linear-gradient(to bottom, #cccccc 1%, #bbbbbb 100%);
+    background-image: linear-gradient(to bottom, #cccccc 1%, #bbbbbb 100%);
+    -moz-border-radius:    5px 5px 5px 5px;
+    -webkit-border-radius: 5px;  
+    border-radius:         5px 5px 5px 5px;
+    font-size: 12px;
+    width: 134px;
+    min-height: 33px;
+    white-space: normal;
+    margin-bottom: 20px;
+}
+.newsframetools {
+    line-height: 33px;
+    min-height: 35px;
+    background-color: white;
+    margin-top: 5px;
+    float:left;
+}
+.imageposition{
+    width: 5%;
+    margin-top: 3px;
+    cursor: pointer;
+    cursor: hand;
+    font-size: 15px !important;
+}
+.questionbuttons {
+    font-size: 12px;
+    width: 95%;
+    min-height: 35px;
+    white-space: normal;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    border: 1px solid lightgray;
+}
+.questionbuttons:hover {
+    background-color: transparent;
+}
+.questionbuttonsclicked{
+    color: rgb(99,180,62);
+}
+.sendtoallspan{
+    margin-left: 50px;
+}
+.sendtoall{
+    cursor: pointer;
+    cursor: hand;
+    font-size: 12px;
+}
+.sendtoallspan:hover{
+    color: #339d04;
+    text-decoration: underline;
+}
+.editor {
+    background-color: white;
+    width: 100%;
+}
+.viewer {
+    background-color: white;
+    width: 100%;
+}
+.errorframe {
+    border: 1px solid red;
+}

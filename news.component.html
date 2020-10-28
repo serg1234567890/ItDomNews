@@ -1,0 +1,159 @@
+<div class="topframe">
+  <div class="card newsformframe" [formGroup]="NewsForm">
+    <div class="card-body">
+      <div class="form-group">
+
+        <div class="row col-md-12 newsformframecaption">
+          <div class="col-md-3">
+            <a>Новости</a>
+          </div>
+          <div class="col-md-3">
+            <span class="input-group-button createsectionbutton">
+              <i *ngIf="!newseditor" class="mdi mdi-plus-circle-outline" (click)="add()" title="Добавить новость"></i>
+              <i *ngIf="newseditor" class="mdi mdi-minus-circle-outline" (click)="escape()" title="Вернуться к списку"></i>
+            </span>
+            <!--
+            <span class="input-group-button createsectionbutton">
+              <i class="mdi mdi-view-headline" (click)="escape()" title="Показать все новости"></i>
+            </span>
+            -->
+          </div>
+          <div *ngIf="readonly" class="col-md-4 newsformframecaptiontext"><a>ТСЖ&nbsp;{{selectedcompany}}</a></div>
+          <div *ngIf="!readonly" class="col-md-4">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{selectedcompany}}</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <button class="status-dropdown-item dropdown-item" type="button" (click)="setCompany(company.id)" *ngFor="let company of companies">{{company.name}}</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <div class="row sectionsseparator"><a>&nbsp;</a></div>
+        
+        <div *ngIf="newseditor" class="row sectionsframerow">
+          <div class="col-md-12">
+            <a>Тема новости</a>
+          </div>
+        </div>
+
+        <div *ngIf="newseditor" class="row editorframe">
+          <div class="col-md-12">
+            <div class="input-group flex-nowrap" [ngClass]="{'errorframe': errorframe == 2}">
+              <input type="text" class="form-control" id="TidingName" placeholder="Тема" formControlName="TidingName" [class.has-error]="HasError('TidingName')">
+            </div>
+            <div class="input-group flex-nowrap" [ngClass]="{'errorframe': errorframe == 3}">
+              <angular-editor formControlName="TidingSubject" id="TidingSubject" [config]="editorConfig"></angular-editor>        
+            </div>
+          </div>
+        </div>
+        <!--
+        <div *ngIf="newsviewer" class="row viewer">
+          <div class="col-md-12">
+            <div class="input-group flex-nowrap">
+              <a>{{TidingName}}</a>
+            </div>
+          </div>
+        </div>
+        -->
+        <div *ngIf="newsviewer" class="row viewer sectionsframerow">
+          <div class="col-md-12">
+              <div [innerHTML]="TidingMessage"></div>
+          </div>
+        </div>
+    
+        <div *ngIf="(newseditor || newsviewer) && tidingtargets && tidingtargets.length>0" class="row sectionsframerow">
+          <div class="col-md-12">
+            <a>Адресаты</a>
+          </div>
+        </div>
+        
+        <div class="row targetsframe">
+          <div class="col-md-12" *ngFor="let item of tidingtargets; let itemindex = index">
+            <div class="input-group flex-nowrap">
+              <button type="button" class="btn btn-light questionbuttons">{{item.title}}</button>
+              <span *ngIf="newseditor" class="input-group-button newsframetools">
+                <i class="mdi mdi-delete imageposition" (click)="deletetarget(itemindex)" title="Удалить адресата"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="newseditor" class="row sectionsframerow">
+          <div class="col-md-12">
+            <a>Добавить адресатов</a>
+          </div>
+        </div>
+
+        <div *ngIf="newseditor" class="row sectionsframerow">
+          <div class="col-md-12">
+            <div class="input-group flex-nowrap">
+              <select class="form-control sectionsframerowdropdown" formControlName="Object" (change)="getObjectPlacements(null)" [class.has-error]="HasError('Object')">
+                <option *ngFor="let obj of objects" [value]="obj.id">{{obj.objectType.name }} {{ obj.name }} {{ obj.address }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="newseditor" class="row sectionsframerow">
+          <div class="col-md-12">
+            <div class="input-group flex-nowrap" [ngClass]="{'errorframe': errorframe == 1}">
+              <ng-multiselect-dropdown class="sectionsframerowmultiselect"
+                name="Placement"
+                [placeholder]="'Выберите помещение'" 
+                [data]="placements" 
+                formControlName="Placement" 
+                [settings]="dropdownSettings" 
+                (onDropDownClose)="onDropDownClose()" 
+                (onSelect)="onItemSelect($event)" 
+                (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+        </div>
+
+        <div class="row sectionsseparator"><a>&nbsp;</a></div>
+
+        <div *ngIf="newseditor" class="row sectionsframerow">
+          <div class="col-md-2 input-group">
+              <button type="button" class="btn btn-primary sectionbuttons" (click)="addtarget()" title="Для нескольких домов">Добавить</button>
+          </div>
+          <!--
+          <div class="col-md-2 input-group">
+            <button type="button" class="btn btn-secondary sectionbuttonscancel" (click)="escape()">Отменить</button>
+          </div>
+        -->
+        </div>
+
+        <div *ngIf="newseditor" class="row sectionsframerow">
+          <div class="col-md-4 input-group">
+              <button [disabled]="sendbutton" type="button" class="btn btn-primary sectionbuttons" (click)="update()">Отправить</button>
+          </div>
+        </div>
+
+        <div class="row sectionsframe">
+          <div class="col-md-12 sectionsframerow" *ngFor="let item of allnews">
+            <div class="input-group flex-nowrap">
+              <button type="button" class="btn btn-light questionbuttons" (click)="edit(item)"><b>{{ item.name }}</b>&nbsp;&nbsp;&nbsp;&nbsp;(создано&nbsp;{{ item.createDate }})</button>
+              <span class="input-group-button newsframetools">
+                <i class="mdi mdi-delete imageposition" (click)="bin(item)" title="Удалить новость"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <app-pager [pager]="pager" (pageAction)="ChangePage($event)"></app-pager>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="row">
+        <blockquote class="blockquote blockquote-danger text-danger" *ngIf="IsErrorForm">
+          Есть ошибки заполнения полей
+        </blockquote>
+      </div>
+    </div>
+  
+  </div>
+  </div>
